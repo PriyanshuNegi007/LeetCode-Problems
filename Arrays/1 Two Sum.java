@@ -1,6 +1,6 @@
 import java.util.Scanner;
 class Solution {
-    /*public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSumBruteForce(int[] nums, int target) {
 
         for(int i=0;i<nums.length;i++){
             for(int j=i+1;j<nums.length;j++){
@@ -12,9 +12,9 @@ class Solution {
          
         }
         return new int[]{};
-    }  */
+    }
     // 2 Pointer Approach
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSumTwoPointerApproach(int[] nums, int target) {
         int aux[] = Arrays.copyOf(nums,nums.length);
         Arrays.sort(nums);
 
@@ -51,5 +51,22 @@ class Solution {
             }
         }
         return new int[]{firstIndex,secondIndex};
+    }
+    // HashMap Approach
+    public static int[] twoSum(int[] nums, int target){
+        int[] pair = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < nums.length; i++){
+            int result = target - nums[i];
+
+            if(map.get(result) != null){
+                pair[0] = map.get(result);
+                pair[1] = i;
+            }else{
+                map.put(nums[i] , i);
+            }
+        }
+        return pair;
     }
 }
