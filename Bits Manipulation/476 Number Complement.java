@@ -1,5 +1,5 @@
 class Solution {
-    public int findComplement(int num) {
+    public int findComplements(int num) {
         int mask=0;
         int temp=num;
 
@@ -8,5 +8,11 @@ class Solution {
             temp=temp>>1;
         }
         return num ^ mask;
+    }
+
+    public int findComplement(int num){
+        int numberOfBits = Integer.toBinaryString(num).length();
+        int mask=(1 << numberOfBits) - 1;
+        return num^mask;
     }
 }
