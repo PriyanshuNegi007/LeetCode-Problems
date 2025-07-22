@@ -6,10 +6,12 @@ class Solution {
 
         int count = 0;
         ListNode temp = head;
+
         while (temp != null){
             count++;
             temp = temp.next;
         }
+
         if (n == count){
             return head.next;
         }
@@ -19,10 +21,7 @@ class Solution {
         for (int i = 0; i < targetIndex - 1; i++){
             temp = temp.next;
         }
-
-        if (temp.next != null){
-            temp.next = temp.next.next;
-        }
+        temp.next = temp.next.next;
         return head;
     }
 }
