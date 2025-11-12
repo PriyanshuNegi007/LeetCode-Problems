@@ -7,13 +7,11 @@ class Solution {
 
         while(!queue.isEmpty()){
             int size = queue.size();
-            long sum = 0;
-            int count = 0;
+            double sum = 0;
 
             for(int i = 0; i < size; i++){
                 TreeNode node = queue.poll();
                 sum = sum + node.val;
-                count++;
                 if(node.left != null){
                     queue.offer(node.left);
                 }
@@ -21,7 +19,7 @@ class Solution {
                     queue.offer(node.right);
                 }
             }
-            averageList.add((sum* 1.0)/count);
+            averageList.add((sum)/size);
         }
         return averageList;
     }
