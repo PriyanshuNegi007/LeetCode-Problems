@@ -38,3 +38,28 @@ class Solution {
         return dp[currentIndex][W];
     }
 }
+
+// Bottom- Up
+class Solution {
+    public static int knapsack(int W, int val[], int wt[]) {
+       int n = val.length;
+       int dp[][] = new int[n + 1][W + 1];
+       
+       for(int currentItem = 1; currentItem <= n; currentItem++){
+           for(int currentCapacity = 1; currentCapacity <= W; currentCapacity++){
+               //Leave it
+               int valueAfterLeave = dp[currentItem - 1][currentCapacity];
+               
+               //Take it
+               int valueAfterTake = 0;
+               
+               if(wt[currentItem - 1] <= currentCapacity){
+                   valueAfterTake = val[currentItem - 1] + dp[currentItem - 1][currentCapacity - wt[currentItem - 1]];
+               }
+               
+               dp[currentItem][currentCapacity] = Math.max(valueAfterLeave, valueAfterTake);
+           }
+       }
+       return dp[n][W];
+    }
+}
